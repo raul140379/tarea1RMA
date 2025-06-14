@@ -1,45 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
-<<<<<<< HEAD
-import { Input, Button, Text } from 'react-native-elements';
-=======
 import { Input, Button, Text,ActivityIndicator } from 'react-native-elements';
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
 import { auth } from '../config/firebase';
 import { signOut } from 'firebase/auth';
 import { db } from '../config/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 export default function HomeScreen({ navigation }) {
-<<<<<<< HEAD
-
-=======
     
     const [loading, setLoading] = useState(false);
      const [actualizar, setActualizar] = useState(false);
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
     const [profile, setProfile] = useState({
         nombre: '',
         apellido: '',
         comidaFavorita: ''
     });
-<<<<<<< HEAD
-
-    useEffect(() => {
-=======
     
     
     useEffect(() => {
        
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
         loadProfile();
     }, []);
 
     const loadProfile = async () => {
-<<<<<<< HEAD
-=======
        //  setLoading(true);
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
         try {
             const docRef = doc(db, 'usuarios', auth.currentUser.uid);
             const docSnap = await getDoc(docRef);
@@ -48,28 +32,12 @@ export default function HomeScreen({ navigation }) {
             }
         } catch (error) {
             console.error('Error al cargar perfil:', error);
-<<<<<<< HEAD
-=======
         }finally {
             setLoading(false);
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
         }
     };
 
     const handleUpdate = async () => {
-<<<<<<< HEAD
-        try {
-
-            await setDoc(doc(db, 'usuarios', auth.currentUser.uid), profile);
-            alert('Perfil actualizado exitosamente');
-        } catch (error) {
-            console.error('Error al actualizar perfil:', error);
-            alert('Error al actualizar perfil');
-        }
-    };
-    
-    const handleSignOut = async () => {
-=======
          // setLoading(true);
         try {
             if (!nombre || !apellido || comidaFavorita) {
@@ -96,7 +64,6 @@ export default function HomeScreen({ navigation }) {
 
     const handleSignOut = async () => {
 
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
         try {
             await signOut(auth);
             navigation.replace('Login');
@@ -123,13 +90,6 @@ export default function HomeScreen({ navigation }) {
                 value={profile.comidaFavorita}
                 onChangeText={(text) => setProfile({ ...profile, comidaFavorita: text })}
             />
-<<<<<<< HEAD
-            <Button
-                title="Actualizar Perfil"
-                onPress={handleUpdate}
-                containerStyle={styles.button}
-            />
-=======
              {/* loading ? (<ActivityIndicator size="large" color="#0000ff" />) : null */}
             <Button
                 title="Actualizar Perfil"
@@ -137,7 +97,6 @@ export default function HomeScreen({ navigation }) {
                 disabled={actualizar}
                 containerStyle={styles.button}
              />
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
             <Button
                 title="Cerrar Sesión"
                 type="outline"

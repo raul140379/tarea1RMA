@@ -1,28 +1,11 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Input, Button, Text } from 'react-native-elements';
-=======
 import React, { useState, useRef } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Input, Button, Text, ActivityIndicator } from 'react-native-elements';
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 import { auth } from '../config/firebase';
 
 export default function RegisterScreen({ navigation }) {
-<<<<<<< HEAD
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const handleRegister = async () => {
-        try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            navigation.replace('Home');
-        } catch (error) {
-            setError('Error al registrarse: ' + error.message);
-=======
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -77,7 +60,6 @@ export default function RegisterScreen({ navigation }) {
 
         } finally {
             setLoading(false);
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
         }
     };
 
@@ -89,10 +71,6 @@ export default function RegisterScreen({ navigation }) {
                 value={email}
                 onChangeText={setEmail}
                 autoCapitalize="none"
-<<<<<<< HEAD
-            />
-            <Input
-=======
                 onSubmitEditing={() => {
                     if (!validarEmail(email)) {
                         setError('Correo inválido: /^[^\s@]+@[^\s@]+\.[^\s@]+$/');
@@ -103,18 +81,10 @@ export default function RegisterScreen({ navigation }) {
             />
             <Input
                 ref={passwordRef}
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
                 placeholder="Contraseña"
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry
-<<<<<<< HEAD
-            />
-            {error ? <Text style={styles.error}>{error}</Text> : null}
-            <Button
-                title="Registrarse"
-                onPress={handleRegister}
-=======
                 onSubmitEditing={() => {
                     if (!validarPassword1(password)) {
                         setError('PW inicial: tiene que tener minimo 8 caracteres(May,min,simbolo,numero');
@@ -148,7 +118,6 @@ export default function RegisterScreen({ navigation }) {
                 title={loading ? "Registrando..." : "Registrar"}
                 onPress={handleRegister}
                 disabled={estado}
->>>>>>> b1bcf6b (Inicio nuevo desde mi repositorio)
                 containerStyle={styles.button}
             />
             <Button
